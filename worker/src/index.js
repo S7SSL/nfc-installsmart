@@ -161,7 +161,7 @@ async function createClickDrop(o, env) {
       weightInGrams: weight,
       packageFormatIdentifier: env.CD_PACKAGE_FORMAT || 'largeLetter',
       contents: [{
-        name: `NFC card: ${o.platform}`,
+        name: "NFC Tap Card (black)",
         SKU: 'NFC-CARD-BLK',
         quantity: o.qty,
         unitValue: 25,
