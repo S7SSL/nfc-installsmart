@@ -1,0 +1,19 @@
+# InstallSmart.AI NFC Tap Cards
+
+> Matt black NFC tap cards for UK businesses and creators, coded to open a Google Business Profile review page, an Instagram profile or a TikTok profile with one tap. £25 per card plus £3.95 Royal Mail Tracked 48. UK delivery only.
+
+## Key facts
+- Price: £25 per card, coded and tested. Postage £3.95 per order by Royal Mail Tracked 48. No monthly fees.
+- Destinations: Google Business Profile (reviews), Instagram or TikTok. One destination per card.
+- Compatibility: iPhone XS and later, and almost every Android phone with NFC. No app needed.
+- Design: sent blank in matt black so the customer can add their own logo sticker.
+- Delivery: UK addresses only. Up to 10 cards per order.
+- Terms: all sales are final. No refunds or cancellations once the order is processed and the card is coded. Faulty cards are replaced free within 30 days.
+
+## Pages
+- [Order an NFC tap card](https://nfc.installsmart.ai/): product details, how it works, FAQs and the order form
+- [Terms of sale](https://nfc.installsmart.ai/terms.html)
+
+## Contact
+- Email: sat@installsmart.ai
+- Parent site: https://installsmart.ai/

@@ -10,3 +10,5 @@ CD_PACKAGE_FORMAT = "largeLetter"
 CARD_WEIGHT_G = "15"
 # Leave blank to pick the service in Click & Drop, or set your Tracked 48 code once confirmed in your account
 CD_SERVICE_CODE = ""
+# Go-live self-test window. After this time /selftest returns 404.
+SELFTEST_UNTIL = "2026-11-25T10:00:00Z"

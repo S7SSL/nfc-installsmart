@@ -15,6 +15,19 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (request.method === 'GET' && url.pathname === '/health') return new Response('ok');
+    // One-off go-live self-test. Switches itself off at SELFTEST_UNTIL.
+    if (request.method === 'GET' && url.pathname === '/selftest') {
+      if (!env.SELFTEST_UNTIL || Date.now() > Date.parse(env.SELFTEST_UNTIL)) return new Response('Not found', { status: 404 });
+      const order = {
+        ref: 'NFC-TEST-GOLIVE', sessionId: 'selftest', qty: 1, link: 'https://www.instagram.com/installsmart.ai/', platform: 'Instagram',
+        name: 'TEST ORDER Do Not Post', business: 'InstallSmart test', email: 'sat@installsmart.ai', phone: '',
+        address: { line1: '86-90 Paul Street', line2: '', city: 'London', state: '', postal_code: 'EC2A 4NE', country: 'GB' },
+        subtotal: 25, shipping: 3.95, total: 28.95, created: new Date().toISOString(),
+      };
+      const cd = env.CLICKDROP_API_KEY ? await createClickDrop(order, env) : { ok: false, detail: 'no key' };
+      const mail = env.RESEND_API_KEY ? await sendEmail(order, cd, env) : { ok: false, detail: 'no key' };
+      return json({ selftest: true, keys: { clickdrop: !!env.CLICKDROP_API_KEY, resend: !!env.RESEND_API_KEY, stripe: !!env.STRIPE_SECRET_KEY, webhook: !!env.STRIPE_WEBHOOK_SECRET }, cd, mail });
+    }
     if (request.method !== 'POST' || url.pathname !== '/stripe') return new Response('Not found', { status: 404 });
 
     const body = await request.text();
@@ -25,7 +38,7 @@ export default {
     if (event.type !== 'checkout.session.completed') return json({ ignored: event.type });
     const s = event.data.object;
     if (env.PAYMENT_LINK_ID && s.payment_link !== env.PAYMENT_LINK_ID) return json({ ignored: 'other payment link' });
-    if (s.payment_status !== 'paid') return json({ ignored: 'not paid yet' });
+    if (s.payment_status !== 'paid' && s.payment_status !== 'no_payment_required') return json({ ignored: 'not paid yet' });
 
     const order = await buildOrder(s, env);
 
@@ -198,7 +211,7 @@ ${row('Royal Mail', cdLine)}
         from: env.FROM_EMAIL || 'InstallSmart NFC <orders@installsmart.ai>',
         to: (env.NOTIFY_TO || 'sat@installsmart.ai,madi@byerim.com').split(',').map((x) => x.trim()),
         reply_to: o.email || undefined,
-        subject: `NFC order ${o.ref}: ${o.qty} x ${o.platform} for ${o.name}`,
+        subject: `${o.sessionId === 'selftest' ? 'TEST, please ignore: ' : ''}NFC order ${o.ref}: ${o.qty} x ${o.platform} for ${o.name}`,
         html,
       }),
     });
