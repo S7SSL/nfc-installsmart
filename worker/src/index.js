@@ -25,7 +25,7 @@ export default {
         subtotal: 25, shipping: 3.95, total: 28.95, created: new Date().toISOString(),
       };
       const cd = env.CLICKDROP_API_KEY ? await createClickDrop(order, env) : { ok: false, detail: 'no key' };
-      const mail = env.RESEND_API_KEY ? await sendEmail(order, cd, env) : { ok: false, detail: 'no key' };
+      const mail = url.searchParams.get('mail') === '0' ? { skipped: true } : env.RESEND_API_KEY ? await sendEmail(order, cd, env) : { ok: false, detail: 'no key' };
       return json({ selftest: true, keys: { clickdrop: !!env.CLICKDROP_API_KEY, resend: !!env.RESEND_API_KEY, stripe: !!env.STRIPE_SECRET_KEY, webhook: !!env.STRIPE_WEBHOOK_SECRET }, cd, mail });
     }
     if (request.method !== 'POST' || url.pathname !== '/stripe') return new Response('Not found', { status: 404 });
@@ -157,7 +157,6 @@ async function createClickDrop(o, env) {
       ...(env.CD_SERVICE_CODE ? { serviceCode: env.CD_SERVICE_CODE } : {}),
     },
     specialInstructions: `Programme ${o.qty} card(s) to ${o.platform}: ${o.link}`.slice(0, 500),
-    label: { includeLabelInResponse: false },
   };
   try {
     const r = await fetch('https://api.parcel.royalmail.com/api/v1/orders', {
@@ -168,7 +167,7 @@ async function createClickDrop(o, env) {
     const text = await r.text();
     let data; try { data = JSON.parse(text); } catch (_) { data = text; }
     const created = data && data.createdOrders && data.createdOrders.length;
-    return { ok: r.ok && !!created, status: r.status, retry: r.status >= 500 || r.status === 429, detail: created ? `Order ${data.createdOrders[0].orderIdentifier}` : JSON.stringify(data).slice(0, 600) };
+    return { ok: r.ok && !!created, status: r.status, retry: r.status >= 500 || r.status === 429, detail: created ? `Order ${data.createdOrders[0].orderIdentifier}` : JSON.stringify((data && data.failedOrders && data.failedOrders[0] && data.failedOrders[0].errors) || data).slice(0, 1500) };
   } catch (e) {
     return { ok: false, retry: true, detail: String(e) };
   }
