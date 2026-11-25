@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFC Tap Cards for Google Reviews, Instagram and TikTok | InstallSmart.AI</title>
+<meta name="description" content="A matt black NFC card programmed to open your Google Business Profile, Instagram or TikTok with one tap. £25 plus £3.95 Royal Mail Tracked 48. UK only.">
+<link rel="canonical" href="https://nfc.installsmart.ai/">
+<meta property="og:title" content="NFC Tap Cards | InstallSmart.AI">
+<meta property="og:description" content="One tap opens your Google reviews, Instagram or TikTok. £25 plus £3.95 tracked UK delivery.">
+<meta property="og:url" content="https://nfc.installsmart.ai/">
+<meta property="og:type" content="website">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"NFC Tap Card","description":"Matt black NFC card programmed to open a Google Business Profile review page, Instagram profile or TikTok profile with one tap.","brand":{"@type":"Brand","name":"InstallSmart.AI"},"offers":{"@type":"Offer","price":"25.00","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://nfc.installsmart.ai/#order","shippingDetails":{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"3.95","currency":"GBP"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"GB"}}}}
+</script>
+<style>
+:root{
+  --bg:#050a14;--bg2:#0a1128;--card:rgba(10,20,50,.7);
+  --cyan:#00e5ff;--cyan-glow:rgba(0,229,255,.3);--cyan-dim:rgba(0,229,255,.08);
+  --magenta:#ff00e5;--magenta-glow:rgba(255,0,229,.25);--green:#00ff88;
+  --white:#e8f0ff;--grey:#8899bb;--line:rgba(0,229,255,.15);
+  --fd:'Orbitron',sans-serif;--fb:'Space Grotesk',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--white);line-height:1.65;overflow-x:hidden}
+a{color:var(--cyan)}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(var(--cyan-dim) 1px,transparent 1px),linear-gradient(90deg,var(--cyan-dim) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%);pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:0 24px}
+
+nav{position:sticky;top:0;z-index:10;background:rgba(5,10,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--fd);font-weight:900;font-size:1.15rem;letter-spacing:3px;color:var(--white);text-decoration:none}
+.logo span{color:var(--cyan)}.logo .dot{color:var(--magenta)}
+.nav-cta{font-family:var(--fd);font-size:.7rem;letter-spacing:2px;padding:10px 22px;border:1px solid var(--cyan);color:var(--cyan);text-decoration:none;transition:.3s}
+.nav-cta:hover{background:var(--cyan);color:var(--bg);box-shadow:0 0 30px var(--cyan-glow)}
+
+.hero{padding:80px 0 60px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.tag{display:inline-block;font-family:var(--fd);font-size:.68rem;letter-spacing:3px;color:var(--cyan);border:1px solid var(--line);padding:7px 14px;margin-bottom:22px;background:var(--cyan-dim)}
+h1{font-family:var(--fd);font-weight:900;font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.12;letter-spacing:1px;margin-bottom:22px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--cyan),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.15rem;color:var(--grey);max-width:540px;margin-bottom:30px}
+.price-row{display:flex;align-items:baseline;gap:14px;margin-bottom:30px;flex-wrap:wrap}
+.price{font-family:var(--fd);font-size:2.6rem;font-weight:900;color:var(--white)}
+.price small{font-size:.9rem;color:var(--grey);font-weight:500;letter-spacing:1px}
+.btn{display:inline-block;font-family:var(--fd);font-size:.8rem;letter-spacing:2px;padding:17px 34px;background:linear-gradient(90deg,var(--cyan),#3bb8ff);color:var(--bg);text-decoration:none;font-weight:700;border:none;cursor:pointer;transition:.3s;box-shadow:0 0 30px var(--cyan-glow)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 45px var(--cyan-glow)}
+.ticks{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;color:var(--grey);font-size:.92rem}
+.ticks span::before{content:"✓ ";color:var(--green);font-weight:700}
+
+/* hero graphic */
+.stage{position:relative;height:440px}
+.stage svg{width:100%;height:100%;overflow:visible}
+.wave{fill:none;stroke:var(--cyan);stroke-width:2.5;stroke-linecap:round;opacity:0;animation:wave 2.4s infinite}
+.wave.w2{animation-delay:.3s}.wave.w3{animation-delay:.6s}
+@keyframes wave{0%{opacity:0}30%{opacity:1}80%{opacity:0}100%{opacity:0}}
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.ping{animation:ping 2.4s infinite;transform-origin:center;transform-box:fill-box}
+@keyframes ping{0%,60%{opacity:0}75%{opacity:1}100%{opacity:1}}
+
+section{padding:80px 0;position:relative}
+.sec-tag{font-family:var(--fd);font-size:.68rem;letter-spacing:4px;color:var(--magenta);margin-bottom:12px;text-align:center}
+h2{font-family:var(--fd);font-size:clamp(1.5rem,3vw,2.2rem);text-align:center;margin-bottom:14px;letter-spacing:1px}
+.sub{text-align:center;color:var(--grey);max-width:620px;margin:0 auto 48px}
+
+.platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pcard{background:var(--card);border:1px solid var(--line);padding:30px 26px;transition:.3s;position:relative;overflow:hidden}
+.pcard::after{content:"";position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--magenta));transform:scaleX(0);transform-origin:left;transition:.4s}
+.pcard:hover{border-color:var(--cyan);transform:translateY(-4px)}.pcard:hover::after{transform:scaleX(1)}
+.pcard .ic{width:58px;height:58px;display:grid;place-items:center;border:1px solid var(--line);margin-bottom:18px;background:var(--cyan-dim)}
+.pcard h3{font-family:var(--fd);font-size:1rem;letter-spacing:1px;margin-bottom:8px}
+.pcard p{color:var(--grey);font-size:.95rem}
+.pcard .best{display:inline-block;margin-top:14px;font-size:.78rem;color:var(--cyan);letter-spacing:1px}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{border-top:2px solid var(--line);padding-top:22px;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--fd);font-size:2rem;font-weight:900;color:transparent;-webkit-text-stroke:1px var(--cyan);display:block;margin-bottom:10px}
+.step h3{font-family:var(--fd);font-size:.9rem;letter-spacing:1px;margin-bottom:8px}
+.step p{color:var(--grey);font-size:.93rem}
+
+.blank{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.blank h2,.blank .sec-tag{text-align:left}
+.blank p{color:var(--grey);margin-bottom:14px}
+.blank svg{width:100%;height:auto}
+
+/* order */
+.order{background:linear-gradient(180deg,transparent,rgba(10,17,40,.85))}
+.order-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:start}
+form{background:var(--card);border:1px solid var(--line);padding:34px}
+fieldset{border:none;margin-bottom:24px}
+legend,label.l{font-family:var(--fd);font-size:.72rem;letter-spacing:2px;color:var(--cyan);display:block;margin-bottom:10px}
+.choice{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice label{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 10px;border:1px solid var(--line);cursor:pointer;text-align:center;font-size:.9rem;transition:.25s;background:rgba(5,10,20,.5)}
+.choice label svg{width:30px;height:30px}
+.choice input:checked+label{border-color:var(--cyan);background:var(--cyan-dim);box-shadow:0 0 20px var(--cyan-glow) inset}
+.choice input:focus-visible+label{outline:2px solid var(--magenta)}
+input[type=text],input[type=email],input[type=url]{width:100%;padding:14px 16px;background:rgba(5,10,20,.7);border:1px solid var(--line);color:var(--white);font-family:var(--fb);font-size:1rem;transition:.25s}
+input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.field{margin-bottom:20px}
+.hint{font-size:.85rem;color:var(--grey);margin-top:8px}
+.qty{display:flex;align-items:center;gap:0;width:max-content;border:1px solid var(--line)}
+.qty button{width:44px;height:46px;background:transparent;border:none;color:var(--cyan);font-size:1.3rem;cursor:pointer}
+.qty input{width:56px;text-align:center;border:none!important;background:transparent!important;padding:12px 0!important}
+.consent{display:flex;gap:10px;font-size:.88rem;color:var(--grey);margin:6px 0 22px;align-items:flex-start}
+.consent input{margin-top:4px;accent-color:var(--cyan)}
+.btn.full{width:100%}
+.msg{margin-top:14px;font-size:.9rem;color:var(--magenta);min-height:1.2em}
+.summary{background:var(--card);border:1px solid var(--line);padding:30px;position:sticky;top:96px}
+.summary h3{font-family:var(--fd);font-size:.85rem;letter-spacing:2px;margin-bottom:18px}
+.line{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);color:var(--grey);font-size:.95rem}
+.line.total{color:var(--white);font-weight:700;font-size:1.15rem;border-bottom:none;padding-top:16px}
+.secure{margin-top:18px;font-size:.84rem;color:var(--grey)}
+.mini-card{margin:0 auto 20px;display:block;width:100%;max-width:260px}
+
+.faq{max-width:800px;margin:0 auto}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--cyan);font-family:var(--fd)}
+details[open] summary::after{content:"−"}
+details p{color:var(--grey);margin-top:12px}
+
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--grey);font-size:.88rem;position:relative;z-index:1}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--grey)}
+
+@media(max-width:900px){
+  .hero .wrap,.blank,.order-grid{grid-template-columns:1fr}
+  .stage{height:340px;order:-1}
+  .platforms{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .summary{position:static}
+}
+@media(max-width:520px){
+  .choice{grid-template-columns:1fr}
+  .choice label{flex-direction:row;justify-content:flex-start;padding:14px 16px}
+  .row{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  form{padding:24px}
+  .nav-cta{padding:9px 12px;font-size:.62rem;white-space:nowrap}
+  .logo{font-size:.95rem;letter-spacing:2px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav><div class="wrap">
+  <a class="logo" href="https://installsmart.ai/">INSTALL<span>SMART</span><span class="dot">.</span><span>AI</span></a>
+  <a class="nav-cta" href="#order">ORDER A CARD</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="tag">NFC TAP CARDS · UK</div>
+    <h1>One tap. Straight to your <em>reviews, Instagram or TikTok.</em></h1>
+    <p class="lead">A matt black NFC card we programme to open your Google Business Profile, Instagram or TikTok. Customers hold their phone to it and your page opens. No app, no QR code to fiddle with.</p>
+    <div class="price-row"><div class="price">£25 <small>PER CARD</small></div><div style="color:var(--grey)">+ £3.95 Royal Mail Tracked 48</div></div>
+    <a class="btn" href="#order">ORDER YOUR CARD</a>
+    <div class="ticks"><span>Programmed and tested</span><span>Works on iPhone and Android</span><span>Tracked UK delivery</span></div>
+  </div>
+
+  <div class="stage" aria-hidden="true">
+    <svg viewBox="0 0 460 440" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cardG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1d24"/><stop offset=".55" stop-color="#0b0c10"/><stop offset="1" stop-color="#16181f"/></linearGradient>
+        <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00e5ff"/><stop offset="1" stop-color="#ff00e5"/></linearGradient>
+        <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1838"/><stop offset="1" stop-color="#070d1f"/></linearGradient>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <radialGradient id="halo"><stop offset="0" stop-color="#00e5ff" stop-opacity=".35"/><stop offset="1" stop-color="#00e5ff" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="230" cy="220" r="210" fill="url(#halo)"/>
+      <!-- phone -->
+      <g class="float">
+        <rect x="248" y="40" width="176" height="350" rx="30" fill="#0a0f1e" stroke="#2a3557" stroke-width="3"/>
+        <rect x="260" y="54" width="152" height="322" rx="20" fill="url(#scr)"/>
+        <rect x="314" y="62" width="44" height="10" rx="5" fill="#05080f"/>
+        <!-- profile screen -->
+        <g class="ping">
+          <circle cx="336" cy="120" r="26" fill="none" stroke="url(#edge)" stroke-width="3"/>
+          <circle cx="336" cy="120" r="19" fill="#1b2750"/>
+          <rect x="296" y="160" width="80" height="9" rx="4" fill="#e8f0ff" opacity=".85"/>
+          <rect x="306" y="176" width="60" height="7" rx="3" fill="#8899bb" opacity=".6"/>
+          <g fill="#00e5ff"><polygon transform="translate(-8 0)" points="300,204 303,211 311,211 305,216 307,224 300,219 293,224 295,216 289,211 297,211"/><polygon transform="translate(12 0)" points="300,204 303,211 311,211 305,216 307,224 300,219 293,224 295,216 289,211 297,211"/><polygon transform="translate(32 0)" points="300,204 303,211 311,211 305,216 307,224 300,219 293,224 295,216 289,211 297,211"/><polygon transform="translate(52 0)" points="300,204 303,211 311,211 305,216 307,224 300,219 293,224 295,216 289,211 297,211"/><polygon transform="translate(72 0)" points="300,204 303,211 311,211 305,216 307,224 300,219 293,224 295,216 289,211 297,211"/></g>
+          <rect x="282" y="242" width="108" height="30" rx="4" fill="#00e5ff"/>
+          <rect x="304" y="253" width="64" height="8" rx="3" fill="#050a14"/>
+          <rect x="282" y="284" width="33" height="33" rx="3" fill="#1b2750"/><rect x="319" y="284" width="33" height="33" rx="3" fill="#2a1b50"/><rect x="356" y="284" width="33" height="33" rx="3" fill="#1b3a50"/>
+          <rect x="282" y="321" width="33" height="33" rx="3" fill="#2a1b50"/><rect x="319" y="321" width="33" height="33" rx="3" fill="#1b3a50"/><rect x="356" y="321" width="33" height="33" rx="3" fill="#1b2750"/>
+        </g>
+      </g>
+      <!-- waves -->
+      <g transform="translate(222 206)">
+        <path class="wave w1" d="M0,-16 A22,22 0 0 1 0,16"/>
+        <path class="wave w2" d="M10,-30 A38,38 0 0 1 10,30"/>
+        <path class="wave w3" d="M20,-44 A54,54 0 0 1 20,44"/>
+      </g>
+      <!-- card -->
+      <g transform="rotate(-12 120 230)">
+        <rect x="20" y="160" width="210" height="134" rx="12" fill="url(#cardG)" stroke="#2c3040" stroke-width="1.5"/>
+        <rect x="20" y="160" width="210" height="134" rx="12" fill="none" stroke="url(#edge)" stroke-width="1.5" opacity=".55" filter="url(#glow)"/>
+        <g transform="translate(190 186)" fill="none" stroke="#3a3f52" stroke-width="2.2" stroke-linecap="round">
+          <path d="M0,-6 A8,8 0 0 1 0,6"/><path d="M5,-11 A14,14 0 0 1 5,11"/><path d="M10,-16 A20,20 0 0 1 10,16"/>
+        </g>
+        <rect x="44" y="238" width="78" height="30" rx="3" fill="none" stroke="#3a3f52" stroke-dasharray="4 4"/>
+        <text x="83" y="257" text-anchor="middle" font-family="Space Grotesk" font-size="9" fill="#5b627a">YOUR LOGO</text>
+      </g>
+    </svg>
+  </div>
+</div></header>
+
+<section id="platforms"><div class="wrap">
+  <div class="sec-tag">PICK ONE PER CARD</div>
+  <h2>What should your card open?</h2>
+  <p class="sub">Each card is set to one destination. Need more than one? Order a card for each.</p>
+  <div class="platforms">
+    <div class="pcard">
+      <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></div>
+      <h3>Google Business Profile</h3>
+      <p>Opens your Google review page so happy customers can leave a star rating there and then, at the counter or the table.</p>
+      <span class="best">Best for shops, salons, trades, cafés</span>
+    </div>
+    <div class="pcard">
+      <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#00e5ff"/></svg></div>
+      <h3>Instagram</h3>
+      <p>Opens your Instagram profile ready to follow. Great for makers, bakers and anyone who sells through their feed.</p>
+      <span class="best">Best for creators, small brands, events</span>
+    </div>
+    <div class="pcard">
+      <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8" stroke-linecap="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.8 2.4 4.6 5 5"/></svg></div>
+      <h3>TikTok</h3>
+      <p>Opens your TikTok profile so people can follow you in a second instead of searching for your name.</p>
+      <span class="best">Best for content creators and pop-ups</span>
+    </div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <div class="sec-tag">HOW IT WORKS</div>
+  <h2>From order to first tap</h2>
+  <p class="sub">You tell us where the card should go. We do the rest.</p>
+  <div class="steps">
+    <div class="step"><h3>Order online</h3><p>Choose Google, Instagram or TikTok and give us your link or @handle.</p></div>
+    <div class="step"><h3>We programme it</h3><p>We write your link to the card and test it on iPhone and Android before it leaves us.</p></div>
+    <div class="step"><h3>Tracked delivery</h3><p>Your card goes out by Royal Mail Tracked 48 with a tracking number.</p></div>
+    <div class="step"><h3>Add your logo</h3><p>Stick your own logo on the front and start collecting taps.</p></div>
+  </div>
+</div></section>
+
+<section id="blank"><div class="wrap blank">
+  <div>
+    <div class="sec-tag">MAKE IT YOURS</div>
+    <h2>Sent blank, in black</h2>
+    <p>Every card arrives as a clean matt black card with no printing, so it suits any brand. Add a logo sticker, a vinyl decal or a hand-written note and it is ready for your till, table or business card holder.</p>
+    <p>The chip sits inside the card, so a sticker on the front does not stop it working.</p>
+  </div>
+  <svg viewBox="0 0 480 300" aria-hidden="true">
+    <defs><linearGradient id="cg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1d24"/><stop offset=".6" stop-color="#0b0c10"/><stop offset="1" stop-color="#16181f"/></linearGradient></defs>
+    <g transform="rotate(-6 150 160)"><rect x="20" y="60" width="250" height="158" rx="14" fill="url(#cg2)" stroke="#2c3040"/><text x="145" y="245" text-anchor="middle" font-family="Orbitron" font-size="11" fill="#5b627a" letter-spacing="3">BLANK</text></g>
+    <path d="M285 140 h46" stroke="#00e5ff" stroke-width="2" stroke-dasharray="5 5"/><path d="M325 132 l10 8 -10 8" fill="none" stroke="#00e5ff" stroke-width="2"/>
+    <g transform="rotate(4 400 150)"><rect x="300" y="76" width="170" height="108" rx="10" fill="url(#cg2)" stroke="#2c3040"/>
+      <circle cx="385" cy="130" r="30" fill="#e8f0ff"/><circle cx="385" cy="130" r="30" fill="none" stroke="#ff00e5" stroke-width="3" stroke-dasharray="6 4"/>
+      <text x="385" y="135" text-anchor="middle" font-family="Orbitron" font-size="12" font-weight="700" fill="#050a14">LOGO</text></g>
+    <text x="385" y="222" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#8899bb">Your sticker here</text>
+  </svg>
+</div></section>
+
+<section id="order" class="order"><div class="wrap">
+  <div class="sec-tag">ORDER</div>
+  <h2>Order your NFC card</h2>
+  <p class="sub">Fill this in then pay securely by card, Apple Pay or Google Pay. UK delivery only.</p>
+  <div class="order-grid">
+    <form id="orderForm" novalidate>
+      <fieldset>
+        <legend>1. WHAT SHOULD IT OPEN?</legend>
+        <div class="choice">
+          <input type="radio" name="platform" id="p-gbp" value="GBP" checked><label for="p-gbp"><svg viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>Google reviews</label>
+          <input type="radio" name="platform" id="p-ig" value="IG"><label for="p-ig"><svg viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/></svg>Instagram</label>
+          <input type="radio" name="platform" id="p-tt" value="TT"><label for="p-tt"><svg viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8" stroke-linecap="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.8 2.4 4.6 5 5"/></svg>TikTok</label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label class="l" for="link">2. <span id="linkLabel">YOUR GOOGLE REVIEW LINK OR BUSINESS NAME</span></label>
+        <input type="text" id="link" name="link" required autocomplete="off" placeholder="https://g.page/r/... or business name and town">
+        <div class="hint" id="linkHint">In your Google Business Profile tap “Ask for reviews” and copy the link. Not sure? Give us your business name and town and we will find it.</div>
+      </div>
+
+      <div class="row">
+        <div><label class="l" for="name">3. YOUR NAME</label><input type="text" id="name" name="name" required autocomplete="name"></div>
+        <div><label class="l" for="email">EMAIL</label><input type="email" id="email" name="email" required autocomplete="email"></div>
+      </div>
+
+      <p class="hint" style="margin:-4px 0 18px">Want more than one card for the same page? You can change the quantity at checkout (up to 10). Postage stays £3.95 per order.</p>
+
+      <label class="consent"><input type="checkbox" id="agree" required> <span>I confirm the link above is mine to use. I will confirm it once more at checkout, where I also add my delivery address.</span></label>
+
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <button class="btn full" type="submit" id="submitBtn">CONTINUE TO SECURE PAYMENT</button>
+      <div class="msg" id="msg" role="alert"></div>
+    </form>
+
+    <aside class="summary">
+      <svg class="mini-card" viewBox="0 0 260 164" aria-hidden="true"><defs><linearGradient id="cg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1d24"/><stop offset=".6" stop-color="#0b0c10"/><stop offset="1" stop-color="#16181f"/></linearGradient><linearGradient id="e3" x1="0" x2="1"><stop offset="0" stop-color="#00e5ff"/><stop offset="1" stop-color="#ff00e5"/></linearGradient></defs><rect x="2" y="2" width="256" height="160" rx="13" fill="url(#cg3)" stroke="url(#e3)" stroke-opacity=".5"/><g transform="translate(222 34)" fill="none" stroke="#3a3f52" stroke-width="2.2" stroke-linecap="round"><path d="M0,-6 A8,8 0 0 1 0,6"/><path d="M5,-11 A14,14 0 0 1 5,11"/><path d="M10,-16 A20,20 0 0 1 10,16"/></g><text x="24" y="140" font-family="Orbitron" font-size="10" fill="#5b627a" letter-spacing="2" id="cardTxt">GOOGLE REVIEWS</text></svg>
+      <h3>ORDER SUMMARY</h3>
+      <div class="line"><span>NFC card × 1</span><span id="sCards">£25.00</span></div>
+      <div class="line"><span>Royal Mail Tracked 48</span><span>£3.95</span></div>
+      <div class="line total"><span>Total</span><span id="sTotal">£28.95</span></div>
+      <p class="secure">🔒 Payment is taken by Stripe. We never see your card details. You will get a receipt by email.</p>
+    </aside>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="sec-tag">FAQ</div>
+  <h2>Questions</h2>
+  <div class="faq">
+    <details><summary>Which phones work with it?</summary><p>Any iPhone from the iPhone XS onwards and almost every Android phone with NFC switched on. There is nothing to install. On iPhone the screen needs to be unlocked and awake.</p></details>
+    <details><summary>How long does delivery take?</summary><p>We programme and test your card then send it by Royal Mail Tracked 48, which aims to deliver within two to three working days of posting. You get a tracking number by email.</p></details>
+    <details><summary>Do you deliver outside the UK?</summary><p>Not at the moment. We only ship to UK addresses.</p></details>
+    <details><summary>Can I put my own logo on it?</summary><p>Yes. Cards are sent blank in matt black so you can add your own logo sticker or decal. A sticker on the front will not stop the card working.</p></details>
+    <details><summary>What if my link changes?</summary><p>Email us and we will talk you through the options. If you are likely to change pages often, tell us when you order.</p></details>
+    <details><summary>What if the card does not work?</summary><p>Every card is tested before it ships. If yours arrives faulty, email us within 30 days and we will replace it free of charge.</p></details>
+    <details><summary>Can I order cards for my team or several branches?</summary><p>Yes. Up to 10 cards can go in one order if they all open the same page. For larger or mixed orders email <a href="mailto:sat@installsmart.ai">sat@installsmart.ai</a>.</p></details>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>© <span id="yr">2026</span> InstallSmart.AI · <a href="https://installsmart.ai/">installsmart.ai</a></div>
+  <div><a href="https://installsmart.ai/privacy.html">Privacy</a> · <a href="https://installsmart.ai/terms.html">Terms</a> · <a href="mailto:sat@installsmart.ai">sat@installsmart.ai</a></div>
+</div></footer>
+
+<script>
+(function(){
+  var STRIPE_LINK='https://buy.stripe.com/cNi00c1fyaQn1AzghH5ZC0s';
+  var W3F_KEY='d2be2094-3eb8-44c2-a60c-3e15e3c57713';
+  
+  var copy={
+    GBP:{label:'YOUR GOOGLE REVIEW LINK OR BUSINESS NAME',ph:'https://g.page/r/... or business name and town',hint:'In your Google Business Profile tap “Ask for reviews” and copy the link. Not sure? Give us your business name and town and we will find it.',card:'GOOGLE REVIEWS',name:'Google Business Profile'},
+    IG:{label:'YOUR INSTAGRAM @HANDLE OR LINK',ph:'@yourbusiness',hint:'Your username as it appears on your profile, for example @bakerybyleena.',card:'INSTAGRAM',name:'Instagram'},
+    TT:{label:'YOUR TIKTOK @HANDLE OR LINK',ph:'@yourname',hint:'Your username as it appears on your profile, for example @yourname.',card:'TIKTOK',name:'TikTok'}
+  };
+  var $=function(id){return document.getElementById(id)};
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  function plat(){return document.querySelector('input[name=platform]:checked').value}
+  function setPlat(){var c=copy[plat()];$('linkLabel').textContent=c.label;$('link').placeholder=c.ph;$('linkHint').textContent=c.hint;$('cardTxt').textContent=c.card}
+  document.querySelectorAll('input[name=platform]').forEach(function(r){r.addEventListener('change',setPlat)});
+  var p=new URLSearchParams(location.search).get('p');if(p&&copy[p.toUpperCase()]){document.querySelector('input[value='+p.toUpperCase()+']').checked=true;setPlat()}
+  function money(n){return '£'+n.toFixed(2)}
+  function ref(code){var s='',a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';for(var i=0;i<6;i++)s+=a[Math.floor(Math.random()*a.length)];return 'NFC-'+code+'-'+s}
+  $('orderForm').addEventListener('submit',function(e){
+    e.preventDefault();var m=$('msg');m.textContent='';
+    var link=$('link').value.trim(),name=$('name').value.trim(),email=$('email').value.trim();
+    if(!link){m.textContent='Please add your link or @handle.';$('link').focus();return}
+    if(!name){m.textContent='Please add your name.';$('name').focus();return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){m.textContent='Please check your email address.';$('email').focus();return}
+    if(!$('agree').checked){m.textContent='Please tick the box to confirm.';return}
+    var code=plat(),r=ref(code);
+    var btn=$('submitBtn');btn.disabled=true;btn.textContent='TAKING YOU TO PAYMENT…';
+    var go=STRIPE_LINK+'?client_reference_id='+encodeURIComponent(r)+'&prefilled_email='+encodeURIComponent(email);
+    try{sessionStorage.setItem('nfc_ref',r)}catch(_){}
+    var payload={access_key:W3F_KEY,subject:'NFC card order started: '+r+' ('+copy[code].name+')',from_name:'nfc.installsmart.ai',replyto:email,
+      'Order ref':r,'Opens':copy[code].name,'Link or handle':link,'Price':'£25 per card + £3.95 postage (quantity chosen at checkout)','Name':name,'Email':email,
+      'Note':'Customer sent to Stripe. Match the ref against the Stripe payment before programming.',botcheck:''};
+    var done=false;function leave(){if(done)return;done=true;location.href=go}
+    setTimeout(leave,3500);
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)}).then(leave,leave);
+  });
+})();
+</script>
+</body>
+</html>
