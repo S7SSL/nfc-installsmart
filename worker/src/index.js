@@ -31,7 +31,7 @@ export default {
     if (request.method !== 'POST' || url.pathname !== '/stripe') return new Response('Not found', { status: 404 });
 
     const body = await request.text();
-    const ok = await verifyStripe(body, request.headers.get('stripe-signature'), env.STRIPE_WEBHOOK_SECRET);
+    const ok = await verifyStripe(body, request.headers.get('stripe-signature'), (env.STRIPE_WEBHOOK_SECRET || '').trim());
     if (!ok) return new Response('Bad signature', { status: 400 });
 
     const event = JSON.parse(body);
