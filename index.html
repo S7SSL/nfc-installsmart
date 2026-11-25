@@ -303,7 +303,7 @@ footer a{color:var(--grey)}
 
       <p class="hint" style="margin:-4px 0 18px">Want more than one card for the same page? You can change the quantity at checkout (up to 10). Postage stays £3.95 per order.</p>
 
-      <label class="consent"><input type="checkbox" id="agree" required> <span>I confirm the link above is mine to use. I will confirm it once more at checkout, where I also add my delivery address.</span></label>
+      <label class="consent"><input type="checkbox" id="agree" required> <span>I confirm the link above is mine to use and I accept the <a href="/terms.html" target="_blank" rel="noopener">terms of sale</a>. All sales are final. Each card is coded to order, so there are no refunds or cancellations once my order has been processed and the card has been coded.</span></label>
 
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
       <button class="btn full" type="submit" id="submitBtn">CONTINUE TO SECURE PAYMENT</button>
@@ -316,6 +316,7 @@ footer a{color:var(--grey)}
       <div class="line"><span>NFC card × 1</span><span id="sCards">£25.00</span></div>
       <div class="line"><span>Royal Mail Tracked 48</span><span>£3.95</span></div>
       <div class="line total"><span>Total</span><span id="sTotal">£28.95</span></div>
+      <p class="secure" style="color:var(--white)"><b>All sales are final.</b> No refunds once your order is processed and the card is coded. <a href="/terms.html">Terms of sale</a></p>
       <p class="secure">🔒 Payment is taken by Stripe. We never see your card details. You will get a receipt by email.</p>
     </aside>
   </div>
@@ -330,14 +331,15 @@ footer a{color:var(--grey)}
     <details><summary>Do you deliver outside the UK?</summary><p>Not at the moment. We only ship to UK addresses.</p></details>
     <details><summary>Can I put my own logo on it?</summary><p>Yes. Cards are sent blank in matt black so you can add your own logo sticker or decal. A sticker on the front will not stop the card working.</p></details>
     <details><summary>What if my link changes?</summary><p>Email us and we will talk you through the options. If you are likely to change pages often, tell us when you order.</p></details>
-    <details><summary>What if the card does not work?</summary><p>Every card is tested before it ships. If yours arrives faulty, email us within 30 days and we will replace it free of charge.</p></details>
+    <details><summary>Can I cancel or get a refund?</summary><p>All sales are final. Every card is coded to the link you give us, so once your order has been processed and the card has been coded we cannot cancel, refund or exchange it. Please check your link or @handle carefully before you pay. See our <a href="/terms.html">terms of sale</a>.</p></details>
+    <details><summary>What if the card does not work?</summary><p>Every card is tested before it ships. If yours arrives faulty, email us within 30 days and we will replace it free of charge. This does not affect your legal rights.</p></details>
     <details><summary>Can I order cards for my team or several branches?</summary><p>Yes. Up to 10 cards can go in one order if they all open the same page. For larger or mixed orders email <a href="mailto:sat@installsmart.ai">sat@installsmart.ai</a>.</p></details>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   <div>© <span id="yr">2026</span> InstallSmart.AI · <a href="https://installsmart.ai/">installsmart.ai</a></div>
-  <div><a href="https://installsmart.ai/privacy.html">Privacy</a> · <a href="https://installsmart.ai/terms.html">Terms</a> · <a href="mailto:sat@installsmart.ai">sat@installsmart.ai</a></div>
+  <div><a href="https://installsmart.ai/privacy.html">Privacy</a> · <a href="/terms.html">Terms of sale</a> · <a href="mailto:sat@installsmart.ai">sat@installsmart.ai</a></div>
 </div></footer>
 
 <script>
@@ -364,7 +366,7 @@ footer a{color:var(--grey)}
     if(!link){m.textContent='Please add your link or @handle.';$('link').focus();return}
     if(!name){m.textContent='Please add your name.';$('name').focus();return}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){m.textContent='Please check your email address.';$('email').focus();return}
-    if(!$('agree').checked){m.textContent='Please tick the box to confirm.';return}
+    if(!$('agree').checked){m.textContent='Please tick the box to confirm and accept the terms of sale.';return}
     var code=plat(),r=ref(code);
     var btn=$('submitBtn');btn.disabled=true;btn.textContent='TAKING YOU TO PAYMENT…';
     var go=STRIPE_LINK+'?client_reference_id='+encodeURIComponent(r)+'&prefilled_email='+encodeURIComponent(email);
