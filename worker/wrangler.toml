@@ -6,8 +6,8 @@ compatibility_date = "2026-11-01"
 PAYMENT_LINK_ID = "plink_1UfS3A2NFW59QiEipiyfRVth"
 NOTIFY_TO = "sat@installsmart.ai,madi@byerim.com"
 FROM_EMAIL = "InstallSmart NFC <orders@installsmart.ai>"
-CD_PACKAGE_FORMAT = "largeLetter"
-CARD_WEIGHT_G = "15"
+CD_PACKAGE_FORMAT = "letter"
+CARD_WEIGHT_G = "9"
 # Leave blank to pick the service in Click & Drop, or set your Tracked 48 code once confirmed in your account
 CD_SERVICE_CODE = ""
 # Go-live self-test window. After this time /selftest returns 404.
