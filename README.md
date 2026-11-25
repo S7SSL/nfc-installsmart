@@ -5,7 +5,7 @@ NFC tap card ordering site for InstallSmart.AI. £25 per card plus £3.95 Royal 
 ## How an order flows
 
 1. Customer fills in the form on nfc.installsmart.ai (platform, link or @handle, name, email).
-2. The form emails an “order started” note to sat@installsmart.ai through Web3Forms (same key as installsmart.ai) and sends the customer to the Stripe payment link with an order reference (for example `NFC-IG-7K2QXM`) and their email filled in.
+2. The site checks the link or @handle, asks the customer to confirm it, then sends them to the Stripe payment link with an order reference (for example `NFC-IG-7K2QXM`) and their email filled in. Nothing is emailed at this stage.
 3. Stripe takes payment, collects the UK delivery address, phone and the profile link again, then returns the customer to `/thanks.html`.
 4. The `worker/` Cloudflare Worker receives Stripe’s `checkout.session.completed` webhook, creates the order in Royal Mail Click & Drop and emails the paid order to sat@installsmart.ai and madi@byerim.com.
 
