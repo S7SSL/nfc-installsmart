@@ -8,7 +8,7 @@ NOTIFY_TO = "sat@installsmart.ai,madi@byerim.com"
 FROM_EMAIL = "InstallSmart NFC <orders@installsmart.ai>"
 CD_PACKAGE_FORMAT = "letter"
 CARD_WEIGHT_G = "9"
-# Leave blank to pick the service in Click & Drop, or set your Tracked 48 code once confirmed in your account
-CD_SERVICE_CODE = ""
+# Royal Mail 2nd Class Signed For (letter), as applied by hand to order 15245
+CD_SERVICE_CODE = "BPR2"
 # Go-live self-test window. After this time /selftest returns 404.
 SELFTEST_UNTIL = "2026-11-25T10:00:00Z"

@@ -93,7 +93,7 @@ async function buildOrder(s, env) {
   const addr = ship.address || (s.customer_details && s.customer_details.address) || {};
   const cust = s.customer_details || {};
   const field = (s.custom_fields || []).find((f) => /profile/i.test(f.key)) || {};
-  const link = (field.text && field.text.value) || '';
+  const link = cleanLink((field.text && field.text.value) || '');
   const ref = s.client_reference_id || `NFC-${s.id.slice(-8).toUpperCase()}`;
   const platform = /NFC-GBP/.test(ref) ? 'Google Business Profile' : /NFC-IG/.test(ref) ? 'Instagram' : /NFC-TT/.test(ref) ? 'TikTok' : guessPlatform(link);
   const shipping = (s.shipping_cost && s.shipping_cost.amount_total) || 395;
@@ -111,6 +111,12 @@ async function buildOrder(s, env) {
     total: (s.amount_total || 2895) / 100,
     created: new Date((s.created || Date.now() / 1000) * 1000).toISOString(),
   };
+}
+
+function cleanLink(v) {
+  const t = String(v).trim();
+  if (/^https?:\/\/(www\.)?(instagram|tiktok)\.com\//i.test(t)) return t.split(/[?#]/)[0];
+  return t;
 }
 
 function guessPlatform(link) {
