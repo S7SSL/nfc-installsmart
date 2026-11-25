@@ -218,7 +218,7 @@ ${row('Customer', esc(o.name) + (o.business ? ` (${esc(o.business)})` : ''))}
 ${row('Email', `<a href="mailto:${esc(o.email)}" style="color:#0a66c2">${esc(o.email)}</a>`)}
 ${row('Phone', esc(o.phone))}
 ${row('Deliver to', addr)}
-${row('Postage', 'Royal Mail Tracked 48')}
+${row('Postage', 'Royal Mail Signed For')}
 ${row('Royal Mail', cdLine)}
 </table>
 <p style="margin:22px 0 0"><a href="https://dashboard.stripe.com/payments?query=${encodeURIComponent(o.email)}" style="display:inline-block;background:#00a3b8;color:#fff;text-decoration:none;padding:10px 18px;border-radius:4px;margin-right:8px">Open in Stripe</a><a href="https://business.parcel.royalmail.com/orders/" style="display:inline-block;background:#da202a;color:#fff;text-decoration:none;padding:10px 18px;border-radius:4px">Open Click &amp; Drop</a></p>

@@ -1,6 +1,6 @@
 # nfc.installsmart.ai
 
-NFC tap card ordering site for InstallSmart.AI. £25 per card plus £3.95 Royal Mail Tracked 48, UK only.
+NFC tap card ordering site for InstallSmart.AI. £25 per card plus £3.95 Royal Mail Signed For, UK only.
 
 ## How an order flows
 
@@ -32,6 +32,6 @@ cd worker && npx wrangler deploy && npx wrangler secret put CLICKDROP_API_KEY &&
 cd worker && npx wrangler secret put STRIPE_WEBHOOK_SECRET
 ```
 
-6. Once you know your Tracked 48 service code in Click & Drop, put it in `CD_SERVICE_CODE` in `wrangler.toml` and redeploy. Left blank, orders arrive in Click & Drop and you pick the service there.
+6. `CD_SERVICE_CODE` in `wrangler.toml` is set to `BPR2` (Royal Mail 2nd Class Signed For). Change it there and redeploy if the service changes.
 
 Health check: `https://nfc-orders.<your-subdomain>.workers.dev/health` returns `ok`.
