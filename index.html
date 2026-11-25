@@ -122,6 +122,16 @@ input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px var(--cya
 .secure{margin-top:18px;font-size:.84rem;color:var(--grey)}
 .mini-card{margin:0 auto 20px;display:block;width:100%;max-width:260px}
 
+.check{position:fixed;inset:0;z-index:50;background:rgba(2,5,12,.82);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px}
+.check[hidden]{display:none}
+.cinner{background:#0a1128;border:1px solid var(--cyan);box-shadow:0 0 60px var(--cyan-glow);max-width:480px;width:100%;padding:30px}
+.cinner h3{font-family:var(--fd);font-size:1.05rem;letter-spacing:1px;margin-bottom:14px}
+.cinner p{color:var(--grey);margin-bottom:12px;font-size:.95rem}
+.cbox{border:1px solid var(--line);background:rgba(5,10,20,.7);padding:14px 16px;font-size:1.15rem;font-weight:600;color:var(--white);margin-bottom:12px;word-break:break-all}
+.cbox small{display:block;font-size:.8rem;font-weight:400;color:var(--grey);margin-top:4px}
+.copen{display:inline-block;margin-bottom:14px;font-weight:600}
+.cnote{font-size:.86rem!important}
+.cedit{display:block;width:100%;margin-top:12px;background:transparent;border:none;color:var(--grey);font-family:var(--fb);font-size:.92rem;cursor:pointer;text-decoration:underline;padding:8px}
 .faq{max-width:800px;margin:0 auto}
 details{border-bottom:1px solid var(--line);padding:20px 0}
 summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:20px}
@@ -337,6 +347,13 @@ footer a{color:var(--grey)}
   </div>
 </div></section>
 
+<div id="check" class="check" hidden role="dialog" aria-modal="true" aria-labelledby="checkT"><div class="cinner">
+  <h3 id="checkT">Check before you pay</h3>
+  <div id="checkBody"></div>
+  <button class="btn full" type="button" id="checkYes">YES, THAT IS MY PAGE</button>
+  <button class="cedit" type="button" id="checkNo">No, let me change it</button>
+</div></div>
+
 <footer><div class="wrap">
   <div>© <span id="yr">2026</span> InstallSmart.AI · <a href="https://installsmart.ai/">installsmart.ai</a></div>
   <div><a href="https://installsmart.ai/privacy.html">Privacy</a> · <a href="/terms.html">Terms of sale</a> · <a href="mailto:sat@installsmart.ai">sat@installsmart.ai</a></div>
@@ -367,17 +384,59 @@ footer a{color:var(--grey)}
     if(!name){m.textContent='Please add your name.';$('name').focus();return}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){m.textContent='Please check your email address.';$('email').focus();return}
     if(!$('agree').checked){m.textContent='Please tick the box to confirm and accept the terms of sale.';return}
-    var code=plat(),r=ref(code);
+    var code=plat(),chk=checkLink(code,link);
+    if(chk.error){m.textContent=chk.error;$('link').focus();return}
+    showCheck(code,chk,function(){proceed(code,chk,link,name,email)});
+  });
+  function checkLink(code,raw){
+    var v=raw.replace(/\s+/g,' ').trim(),mm;
+    if(code==='IG'||code==='TT'){
+      var h=v;
+      if(/^https?:\/\//i.test(v)||/^(www\.)?(instagram|tiktok)\.com/i.test(v)){
+        mm=v.match(code==='IG'?/instagram\.com\/([A-Za-z0-9._]+)/i:/tiktok\.com\/@?([A-Za-z0-9._]+)/i);
+        if(!mm)return{error:code==='IG'?'That does not look like an Instagram profile link. Try your @handle instead.':'That does not look like a TikTok profile link. Try your @handle instead.'};
+        h=mm[1];
+      }
+      h=h.replace(/^@+/,'').replace(/\/+$/,'');
+      var ok=code==='IG'?/^[A-Za-z0-9._]{1,30}$/.test(h):/^[A-Za-z0-9._]{2,24}$/.test(h);
+      if(!ok)return{error:'Please check your @handle. It can only contain letters, numbers, full stops and underscores, with no spaces.'};
+      return{handle:'@'+h,url:code==='IG'?'https://www.instagram.com/'+h+'/':'https://www.tiktok.com/@'+h};
+    }
+    if(/^https?:\/\//i.test(v)||/^(g\.page|maps\.app\.goo\.gl|goo\.gl|(www\.)?google\.)/i.test(v)){
+      var u=/^https?:\/\//i.test(v)?v:'https://'+v,host='';
+      try{host=new URL(u).hostname.toLowerCase()}catch(_){return{error:'Please check your Google link. It does not look complete.'}}
+      if(!/(^|\.)g\.page$|(^|\.)goo\.gl$|(^|\.)google\.[a-z.]+$|(^|\.)g\.co$/.test(host))return{error:'That is not a Google link. Paste your Google review link or type your business name and town.'};
+      return{url:u};
+    }
+    if(v.length<3)return{error:'Please add your Google review link or your business name and town.'};
+    return{business:v};
+  }
+  function showCheck(code,chk,onYes){
+    var o=$('check'),t=copy[code].name,h='';
+    if(chk.url){
+      h='<p>Your card will open this '+t+' page:</p><div class="cbox">'+esc(chk.handle||chk.url)+(chk.handle?'<small>'+esc(chk.url)+'</small>':'')+'</div><a class="copen" href="'+esc(chk.url)+'" target="_blank" rel="noopener">Open it in a new tab to check ↗</a><p class="cnote">Please open it and make sure it is your page. Cards are coded to order and all sales are final.</p>';
+      $('checkYes').textContent='YES, THAT IS MY PAGE';
+    }else{
+      h='<p>We will look up the Google Business Profile for:</p><div class="cbox">'+esc(chk.business)+'</div><p class="cnote">We will email you the exact review link to confirm before we code your card. Please check the business name and town are right.</p>';
+      $('checkYes').textContent='YES, THAT IS CORRECT';
+    }
+    $('checkBody').innerHTML=h;o.hidden=false;
+    $('checkYes').onclick=function(){o.hidden=true;onYes()};
+    $('checkNo').onclick=function(){o.hidden=true;$('link').focus()};
+  }
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function proceed(code,chk,link,name,email){
+    var r=ref(code);
     var btn=$('submitBtn');btn.disabled=true;btn.textContent='TAKING YOU TO PAYMENT…';
     var go=STRIPE_LINK+'?client_reference_id='+encodeURIComponent(r)+'&prefilled_email='+encodeURIComponent(email);
     try{sessionStorage.setItem('nfc_ref',r)}catch(_){}
     var payload={access_key:W3F_KEY,subject:'NFC card order started: '+r+' ('+copy[code].name+')',from_name:'nfc.installsmart.ai',replyto:email,
-      'Order ref':r,'Opens':copy[code].name,'Link or handle':link,'Price':'£25 per card + £3.95 postage (quantity chosen at checkout)','Name':name,'Email':email,
-      'Note':'Customer sent to Stripe. Match the ref against the Stripe payment before programming.',botcheck:''};
+      'Order ref':r,'Opens':copy[code].name,'Customer typed':link,'Code the card to':chk.url||('LOOK UP AND CONFIRM WITH CUSTOMER: '+chk.business),'Customer confirmed on site':chk.url?'Yes, confirmed this is their page':'Confirmed business name only. Email them the link before coding','Price':'£25 per card + £3.95 postage (quantity chosen at checkout)','Name':name,'Email':email,
+      'Note':'Customer sent to Stripe. Match the ref against the Stripe payment before coding.',botcheck:''};
     var done=false;function leave(){if(done)return;done=true;location.href=go}
     setTimeout(leave,3500);
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)}).then(leave,leave);
-  });
+  }
 })();
 </script>
 </body>
